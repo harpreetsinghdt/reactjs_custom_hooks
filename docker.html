@@ -1,0 +1,84 @@
+## Check docker version 
+> docker -v
+
+## To run an image
+> docker run -it <image_name>
+
+## To run ubuntu image 
+> docker run -it ubuntu
+
+```
+docker run - it is the command to run a container with the specified image (i.e. ubuntu)
+ubuntu - name of the image to create
+-it - flag for iteractive mode
+first time it download image from docker hub (hub.docker.com) so it takes sometime but afterwards it take copyy from locally availble image.
+```
+
+## To check all images
+> docker images
+> docker image ls
+
+
+
+## To list all running containers
+> docker container ls
+
+## To list all containers running or exited
+> docker container ls -a
+
+```
+-a flag to show all container
+```
+
+## To start a conatiner with its name
+> docker start <container_name>
+
+
+## To stop a conatiner with its name
+> docker stop <container_name>
+
+```
+Docker run spin up a brand new container but docker start & stop do work with existing containers.
+Containers are isolated it means they work seperate and ditached from your machine. 
+```
+
+## To fetch data from a container without entering it and show result at base terminal path
+> docker exec <container_name> <command>
+> docker exec <container_name> ls
+
+```
+It will fetch container data result without entering it and show up result of execution at base terminal
+Key point: container must be in running state. It will throw an error if the container is not running. 
+```
+
+## To attach docker to terminal while execution
+> docker exec -it <container_name> bash
+
+```
+It will start the container and take control to container terminal
+```
+
+## Try another images
+## Nodejs image
+> docker run -it node
+
+## control+d command is to simply exit the container 
+
+# Port mapping in Docker
+## Mapping docker's port to local machine port 
+## so that browser can access the server running in docker
+> docker run -it -p 8000:8000 mynodeapp
+> docker run -it -p 3000:8000 mynodeapp
+
+```
+Here flag -p is for port. it map docker's port 8000 to local machine's port 8000 
+so that node server running in the docker container will accessible to local machine on its port.
+Docker's port can also be mounted on different port on local machine. its not required to be always same.
+```
+
+# Pass Environment variables
+> > docker run -it -p 3000:8000 -e key=value -e key=value mynodeapp
+
+```
+Flag -e can be used to pass env variable in key value pairs and multiple env can be passed.
+```
